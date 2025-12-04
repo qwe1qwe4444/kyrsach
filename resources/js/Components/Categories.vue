@@ -14,14 +14,14 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, inject } from 'vue';
 
-const activeCategory = ref(null);
+const setActiveCategory = inject('setActiveCategory', null);
+const activeCategory = inject('activeCategory', ref(2));
 
 const categories = [
     { id: 1, name: 'Комбо' },
     { id: 2, name: 'Пиццы' },
-    { id: 3, name: 'Пицца боны' },
     { id: 4, name: 'Закуски' },
     { id: 5, name: 'Десерты' },
     { id: 6, name: 'Напитки' },
@@ -29,7 +29,11 @@ const categories = [
 ];
 
 const selectCategory = (id) => {
-    activeCategory.value = activeCategory.value === id ? null : id;
+    if (setActiveCategory) {
+        setActiveCategory(id);
+    } else {
+        activeCategory.value = id;
+    }
 };
 </script>
 

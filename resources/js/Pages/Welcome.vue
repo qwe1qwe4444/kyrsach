@@ -1,9 +1,11 @@
 <script setup>
 import { Head, Link } from '@inertiajs/vue3';
+import { ref, provide } from 'vue';
 import Header from '@/Components/Header.vue';
 import Hero from '@/Components/Hero.vue';
 import Categories from '@/Components/Categories.vue';
 import Products from '@/Components/Products.vue';
+import Footer from '@/Components/Footer.vue';
 
 defineProps({
     canLogin: {
@@ -13,6 +15,79 @@ defineProps({
         type: Boolean,
     },
 });
+
+// Общее состояние для категорий и поиска
+const activeCategory = ref(2); // По умолчанию "Пиццы"
+const searchQuery = ref('');
+
+const setActiveCategory = (categoryId) => {
+    activeCategory.value = categoryId;
+    searchQuery.value = ''; // Очищаем поиск при смене категории
+};
+
+const setSearchQuery = (query) => {
+    searchQuery.value = query;
+};
+
+// Состояние корзины
+const cart = ref([]);
+
+const addToCart = (item) => {
+    const existingItem = cart.value.find(
+        i => i.productId === item.productId && i.size === item.size
+    );
+    if (existingItem) {
+        existingItem.quantity += 1;
+    } else {
+        cart.value.push({ ...item, quantity: 1 });
+    }
+    // Сохраняем в localStorage
+    localStorage.setItem('cart', JSON.stringify(cart.value));
+};
+
+const removeFromCart = (index) => {
+    cart.value.splice(index, 1);
+    localStorage.setItem('cart', JSON.stringify(cart.value));
+};
+
+const updateCartItemQuantity = (index, quantity) => {
+    if (quantity <= 0) {
+        removeFromCart(index);
+    } else {
+        cart.value[index].quantity = quantity;
+        localStorage.setItem('cart', JSON.stringify(cart.value));
+    }
+};
+
+const clearCart = () => {
+    cart.value = [];
+    localStorage.removeItem('cart');
+};
+
+// Загружаем корзину из localStorage при инициализации
+const loadCart = () => {
+    const savedCart = localStorage.getItem('cart');
+    if (savedCart) {
+        try {
+            cart.value = JSON.parse(savedCart);
+        } catch (e) {
+            cart.value = [];
+        }
+    }
+};
+
+loadCart();
+
+// Предоставляем состояние дочерним компонентам
+provide('activeCategory', activeCategory);
+provide('setActiveCategory', setActiveCategory);
+provide('searchQuery', searchQuery);
+provide('setSearchQuery', setSearchQuery);
+provide('cart', cart);
+provide('addToCart', addToCart);
+provide('removeFromCart', removeFromCart);
+provide('updateCartItemQuantity', updateCartItemQuantity);
+provide('clearCart', clearCart);
 </script>
 
 <template>
@@ -27,6 +102,7 @@ defineProps({
         <Hero />
         <Categories />
         <Products />
+        <Footer />
         
         <!-- Auth Links (optional, can be removed if not needed) -->
         <div v-if="canLogin" class="auth-links">
