@@ -39,10 +39,10 @@ const selectCategory = (id) => {
 
 <style scoped>
 .categories {
-    background: #c9a982;
+    background: linear-gradient(135deg, #C85D3E 0%, #B84A3A 100%);
     padding: 20px 0;
     margin: 0;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 12px rgba(200, 93, 62, 0.15);
 }
 
 .categories-container {
@@ -64,29 +64,45 @@ const selectCategory = (id) => {
     font-weight: 600;
     font-size: 15px;
     font-family: "Dela Gothic One", sans-serif;
-    color: #3b2b1f;
+    color: #3D2E28;
     transition: all 0.3s ease;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .category-btn:hover {
-    background: #f5e6d3;
+    background: rgba(245, 240, 232, 0.8);
     transform: translateY(-2px);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
 .category-btn.active {
-    background: #99582A;
-    color: #fff;
-    border-color: #c49a6c;
-    box-shadow: 0 4px 12px rgba(153, 88, 42, 0.3);
+    background: rgba(255, 255, 255, 0.95);
+    color: #B84A3A;
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .category-btn.active:hover {
-    background: #8a4d25;
+    background: rgba(255, 255, 255, 1);
+}
+
+@media (max-width: 968px) {
+    .categories-container {
+        padding: 0 18px;
+        gap: 10px;
+    }
+    
+    .category-btn {
+        padding: 9px 20px;
+        font-size: 14px;
+    }
 }
 
 @media (max-width: 768px) {
+    .categories {
+        padding: 18px 0;
+    }
+    
     .categories-container {
         padding: 0 15px;
         gap: 8px;
@@ -95,6 +111,38 @@ const selectCategory = (id) => {
     .category-btn {
         padding: 8px 18px;
         font-size: 13px;
+    }
+}
+
+@media (max-width: 640px) {
+    .categories {
+        padding: 15px 0;
+    }
+    
+    .categories-container {
+        padding: 0 12px;
+        gap: 6px;
+    }
+    
+    .category-btn {
+        padding: 7px 14px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .categories {
+        padding: 12px 0;
+    }
+    
+    .categories-container {
+        padding: 0 10px;
+        gap: 5px;
+    }
+    
+    .category-btn {
+        padding: 6px 12px;
+        font-size: 11px;
     }
 }
 </style>

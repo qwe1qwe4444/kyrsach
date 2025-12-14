@@ -25,7 +25,7 @@
     align-items: center;
     justify-content: center;
     gap: 40px;
-    background: linear-gradient(135deg, #fffaf4 0%, #f5e6d3 100%);
+    background: linear-gradient(135deg, #F8F5F0 0%, #F5F0E8 100%);
     border-radius: 24px;
     padding: 40px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
@@ -52,7 +52,7 @@
 .hero-title {
     font-family: "Dela Gothic One", sans-serif;
     font-size: 42px;
-    color: #3b2b1f;
+    color: #3D2E28;
     margin: 0 0 16px 0;
     font-weight: bold;
     line-height: 1.2;
@@ -61,24 +61,30 @@
 .hero-subtitle {
     font-family: "Dela Gothic One", sans-serif;
     font-size: 24px;
-    color: #99582A;
+    color: #B84A3A;
     margin: 0 0 16px 0;
     font-weight: 600;
 }
 
 .hero-description {
     font-size: 18px;
-    color: #6a5b4a;
+    color: #6B5A4A;
     margin: 0;
     line-height: 1.6;
     max-width: 500px;
 }
 
 @media (max-width: 968px) {
+    .hero {
+        margin: 25px auto;
+        padding: 0 18px;
+    }
+    
     .hero-content {
         flex-direction: column;
         text-align: center;
         padding: 30px 20px;
+        gap: 30px;
     }
     
     .hero-text {
@@ -103,14 +109,15 @@
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
     .hero {
         margin: 20px auto;
         padding: 0 15px;
     }
     
     .hero-content {
-        padding: 20px 15px;
+        padding: 25px 18px;
+        gap: 25px;
     }
     
     .hero-title {
@@ -122,7 +129,67 @@
     }
     
     .hero-description {
+        font-size: 15px;
+    }
+    
+    .hero-image {
+        max-width: 280px;
+    }
+}
+
+@media (max-width: 640px) {
+    .hero {
+        margin: 15px auto;
+        padding: 0 12px;
+    }
+    
+    .hero-content {
+        padding: 20px 15px;
+        gap: 20px;
+    }
+    
+    .hero-title {
+        font-size: 26px;
+    }
+    
+    .hero-subtitle {
+        font-size: 17px;
+    }
+    
+    .hero-description {
         font-size: 14px;
+    }
+    
+    .hero-image {
+        max-width: 250px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        margin: 12px auto;
+        padding: 0 10px;
+    }
+    
+    .hero-content {
+        padding: 18px 12px;
+        gap: 18px;
+    }
+    
+    .hero-title {
+        font-size: 24px;
+    }
+    
+    .hero-subtitle {
+        font-size: 16px;
+    }
+    
+    .hero-description {
+        font-size: 13px;
+    }
+    
+    .hero-image {
+        max-width: 220px;
     }
 }
 </style>

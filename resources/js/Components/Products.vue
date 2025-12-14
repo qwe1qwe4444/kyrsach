@@ -1,5 +1,6 @@
 <script setup>
 import { ref, computed, inject } from 'vue';
+import Modal from '@/Components/Modal.vue';
 
 const handleImageError = (event) => {
     event.target.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjQwMCIgdmlld0JveD0iMCAwIDgwIDgwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iNDAwIiBmaWxsPSIjZjVmNTVmNSIvPjxjaXJjbGUgY3g9IjIwMCIgY3k9IjIwMCIgcj0iMTUwIiBmaWxsPSIjZDdiMzg5IiBzdHJva2U9IiNjNDlhNmMiIHN0cm9rZS13aWR0aD0iNCIvPjxwYXRoIGQ9Ik0yMDAgMTAwIEwyNTAgMTc1IEwxNTAgMTc1IFoiIGZpbGw9IiM5OTU4MkEiLz48Y2lyY2xlIGN4PSIyMDAiIGN5PSIyMDAiIHI9IjQwIiBmaWxsPSIjYzQ5YTZjIi8+PC9zdmc+';
@@ -375,6 +376,52 @@ const getCurrentPrice = (product) => {
     return product.prices.single;
 };
 
+// Состояние для модального окна с подробностями
+const selectedProduct = ref(null);
+const showProductModal = ref(false);
+
+const openProductModal = (product) => {
+    selectedProduct.value = product;
+    showProductModal.value = true;
+};
+
+const closeProductModal = () => {
+    showProductModal.value = false;
+    setTimeout(() => {
+        selectedProduct.value = null;
+    }, 300);
+};
+
+const addToCartFromModal = (product) => {
+    let size = '';
+    let sizeKey = '';
+    if (product.hasSizes) {
+        size = product.selectedSize === 'small' ? '35 см' : '45 см';
+        sizeKey = product.selectedSize;
+    } else {
+        sizeKey = 'single';
+    }
+    const price = getCurrentPrice(product);
+    
+    const cartItem = {
+        productId: product.id,
+        name: product.name,
+        image: product.image,
+        size: sizeKey,
+        sizeLabel: size,
+        price: price,
+        hasSizes: product.hasSizes
+    };
+    
+    if (addToCartGlobal) {
+        addToCartGlobal(cartItem);
+        window.dispatchEvent(new Event('cartUpdated'));
+    }
+    
+    // Закрываем модальное окно после добавления
+    closeProductModal();
+};
+
 const animateToCart = (productCard, productImage) => {
     const cartIcon = document.getElementById('cart-icon');
     if (!cartIcon || !productCard || !productImage) return;
@@ -393,7 +440,7 @@ const animateToCart = (productCard, productImage) => {
     flyingElement.style.zIndex = '10000';
     flyingElement.style.pointerEvents = 'none';
     flyingElement.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.3)';
-    flyingElement.style.border = '3px solid #d7b389';
+    flyingElement.style.border = '3px solid #C85D3E';
     
     // Копируем изображение
     const img = document.createElement('img');
@@ -497,7 +544,7 @@ const addToCart = (product, event) => {
             <div class="search-container">
                 <div class="search-wrapper">
                     <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z" stroke="#99582A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z" stroke="#B84A3A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                     <input
                         type="text"
@@ -513,7 +560,7 @@ const addToCart = (product, event) => {
                         aria-label="Очистить поиск"
                     >
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M18 6L6 18M6 6L18 18" stroke="#99582A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M18 6L6 18M6 6L18 18" stroke="#B84A3A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                     </button>
                 </div>
@@ -530,6 +577,7 @@ const addToCart = (product, event) => {
                 v-for="product in filteredProducts" 
                 :key="product.id"
                 class="card"
+                @click="openProductModal(product)"
             >
                 <div class="card-image-wrapper">
                     <div class="image-overlay"></div>
@@ -575,13 +623,81 @@ const addToCart = (product, event) => {
                     
                     <button 
                         class="btn"
-                        @click="addToCart(product, $event)"
+                        @click.stop="addToCart(product, $event)"
                     >
                         Добавить в корзину
                     </button>
                 </div>
             </div>
         </div>
+        
+        <!-- Модальное окно с подробностями о продукте -->
+        <Modal :show="showProductModal" @close="closeProductModal" max-width="xl">
+            <div v-if="selectedProduct" class="product-modal">
+                <div class="modal-header">
+                    <h2 class="modal-title">{{ selectedProduct.name }}</h2>
+                    <button class="modal-close" @click="closeProductModal" aria-label="Закрыть">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18 6L6 18M6 6L18 18" stroke="#3D2E28" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+                
+                <div class="modal-content">
+                    <div class="modal-image-wrapper">
+                        <img 
+                            :src="selectedProduct.image" 
+                            :alt="selectedProduct.name"
+                            class="modal-image"
+                            @error="handleImageError"
+                        />
+                        <div class="modal-badge" v-if="selectedProduct.id <= 6">Хит продаж</div>
+                        <div class="modal-badge modal-badge-new" v-if="selectedProduct.additionalCategories && selectedProduct.additionalCategories.includes(7)">Новинка</div>
+                    </div>
+                    
+                    <div class="modal-info">
+                        <div class="modal-description">
+                            <h3 class="info-title">Описание</h3>
+                            <p class="info-text">{{ selectedProduct.description }}</p>
+                        </div>
+                        
+                        <div class="modal-details">
+                            <div class="detail-item" v-if="selectedProduct.hasSizes">
+                                <h3 class="info-title">Размеры</h3>
+                                <div class="modal-size-buttons">
+                                    <button
+                                        :class="['modal-size-btn', { active: selectedProduct.selectedSize === 'small' }]"
+                                        @click.stop="selectSize(selectedProduct.id, 'small')"
+                                    >
+                                        <span class="modal-size-value">35 см</span>
+                                        <span class="modal-size-price">{{ selectedProduct.prices.small }}₽</span>
+                                    </button>
+                                    <button
+                                        :class="['modal-size-btn', { active: selectedProduct.selectedSize === 'large' }]"
+                                        @click.stop="selectSize(selectedProduct.id, 'large')"
+                                    >
+                                        <span class="modal-size-value">45 см</span>
+                                        <span class="modal-size-price">{{ selectedProduct.prices.large }}₽</span>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="modal-price-section">
+                                <span class="price-label">Цена:</span>
+                                <span class="modal-price-value">{{ getCurrentPrice(selectedProduct) }}₽</span>
+                            </div>
+                        </div>
+                        
+                        <button 
+                            class="modal-add-btn"
+                            @click.stop="addToCartFromModal(selectedProduct)"
+                        >
+                            Добавить в корзину
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </Modal>
     </section>
 </template>
 
@@ -599,7 +715,7 @@ const addToCart = (product, event) => {
 .section-title {
     font-family: "Dela Gothic One", sans-serif;
     font-size: 32px;
-    color: #3b2b1f;
+    color: #3D2E28;
     text-align: center;
     margin-bottom: 30px;
     font-weight: bold;
@@ -626,11 +742,11 @@ const addToCart = (product, event) => {
 .search-input {
     width: 100%;
     padding: 14px 50px 14px 48px;
-    border: 2px solid #e8dcc6;
+    border: 2px solid rgba(232, 221, 208, 0.6);
     border-radius: 16px;
     font-size: 16px;
     font-family: "Dela Gothic One", sans-serif;
-    color: #3b2b1f;
+    color: #3D2E28;
     background: white;
     transition: all 0.3s ease;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
@@ -638,8 +754,8 @@ const addToCart = (product, event) => {
 
 .search-input:focus {
     outline: none;
-    border-color: #d7b389;
-    box-shadow: 0 4px 12px rgba(153, 88, 42, 0.2);
+    border-color: #C85D3E;
+    box-shadow: 0 4px 12px rgba(200, 93, 62, 0.2);
 }
 
 .search-input::placeholder {
@@ -662,26 +778,26 @@ const addToCart = (product, event) => {
 }
 
 .search-clear:hover {
-    background: #f5e6d3;
+    background: #F5F0E8;
     transform: scale(1.1);
 }
 
 .no-results {
     text-align: center;
     padding: 60px 20px;
-    color: #6a5b4a;
+    color: #6B5A4A;
 }
 
 .no-results p {
     font-size: 20px;
     font-family: "Dela Gothic One", sans-serif;
     margin: 0 0 12px 0;
-    color: #3b2b1f;
+    color: #3D2E28;
 }
 
 .no-results-hint {
     font-size: 14px;
-    color: #6a5b4a;
+    color: #6B5A4A;
     font-family: sans-serif;
 }
 
@@ -700,21 +816,22 @@ const addToCart = (product, event) => {
     display: flex;
     flex-direction: column;
     border: 2px solid transparent;
+    cursor: pointer;
 }
 
 .card:hover {
     transform: translateY(-8px);
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
-    border-color: #d7b389;
+    border-color: #C85D3E;
 }
 
 .card-image-wrapper {
     width: 100%;
     padding-top: 100%;
     position: relative;
-    background: linear-gradient(135deg, #fffaf4 0%, #f5e6d3 100%);
+    background: linear-gradient(135deg, #F8F5F0 0%, #F5F0E8 100%);
     overflow: hidden;
-    border-bottom: 3px solid #c49a6c;
+    border-bottom: 3px solid rgba(184, 74, 58, 0.4);
 }
 
 .image-overlay {
@@ -725,10 +842,10 @@ const addToCart = (product, event) => {
     bottom: 0;
     background: linear-gradient(
         180deg, 
-        rgba(215, 179, 137, 0.15) 0%, 
+        rgba(255, 107, 53, 0.15) 0%, 
         transparent 40%,
         transparent 60%,
-        rgba(153, 88, 42, 0.25) 100%
+        rgba(230, 57, 70, 0.25) 100%
     );
     z-index: 1;
     pointer-events: none;
@@ -750,7 +867,7 @@ const addToCart = (product, event) => {
         sepia(0.08)
         hue-rotate(-5deg);
     transform: scale(1);
-    background-color: #f5e6d3;
+    background-color: #F5F0E8;
 }
 
 .card:hover .card-image {
@@ -767,7 +884,7 @@ const addToCart = (product, event) => {
     position: absolute;
     top: 12px;
     right: 12px;
-    background: linear-gradient(135deg, #99582A 0%, #c49a6c 100%);
+    background: linear-gradient(135deg, #B84A3A 0%, #C85D3E 100%);
     color: white;
     padding: 6px 12px;
     border-radius: 20px;
@@ -781,7 +898,7 @@ const addToCart = (product, event) => {
 }
 
 .image-badge-new {
-    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+    background: linear-gradient(135deg, #B84A3A 0%, #A63D2E 100%);
     animation: pulse 2s ease-in-out infinite;
     top: 12px;
     left: 12px;
@@ -791,11 +908,11 @@ const addToCart = (product, event) => {
 @keyframes pulse {
     0%, 100% {
         transform: scale(1);
-        box-shadow: 0 2px 8px rgba(231, 76, 60, 0.3);
+        box-shadow: 0 2px 8px rgba(184, 74, 58, 0.3);
     }
     50% {
         transform: scale(1.05);
-        box-shadow: 0 4px 12px rgba(231, 76, 60, 0.5);
+        box-shadow: 0 4px 12px rgba(184, 74, 58, 0.5);
     }
 }
 
@@ -810,7 +927,7 @@ const addToCart = (product, event) => {
 .card-title {
     font-family: "Dela Gothic One", sans-serif;
     font-size: 22px;
-    color: #3b2b1f;
+    color: #3D2E28;
     margin: 0;
     font-weight: bold;
     line-height: 1.3;
@@ -818,7 +935,7 @@ const addToCart = (product, event) => {
 
 .card-description {
     font-size: 14px;
-    color: #6a5b4a;
+    color: #6B5A4A;
     margin: 0;
     line-height: 1.6;
     flex: 1;
@@ -831,7 +948,7 @@ const addToCart = (product, event) => {
 .size-label {
     display: block;
     font-size: 13px;
-    color: #6a5b4a;
+    color: #6B5A4A;
     font-weight: 600;
     margin-bottom: 10px;
     font-family: "Dela Gothic One", sans-serif;
@@ -845,8 +962,8 @@ const addToCart = (product, event) => {
 .size-btn {
     flex: 1;
     padding: 10px 12px;
-    background: #f5e6d3;
-    border: 2px solid #e8dcc6;
+    background: #F5F0E8;
+    border: 2px solid rgba(232, 221, 208, 0.6);
     border-radius: 12px;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -858,16 +975,16 @@ const addToCart = (product, event) => {
 }
 
 .size-btn:hover {
-    background: #e8dcc6;
-    border-color: #d7b389;
+    background: rgba(232, 221, 208, 0.5);
+    border-color: #C85D3E;
     transform: translateY(-2px);
 }
 
 .size-btn.active {
-    background: linear-gradient(135deg, #d7b389 0%, #c49a6c 100%);
-    border-color: #99582A;
-    color: #3b2b1f;
-    box-shadow: 0 4px 12px rgba(153, 88, 42, 0.3);
+    background: linear-gradient(135deg, #C85D3E 0%, #B84A3A 100%);
+    border-color: #B84A3A;
+    color: white;
+    box-shadow: 0 4px 12px rgba(230, 57, 70, 0.3);
 }
 
 .size-value {
@@ -887,22 +1004,22 @@ const addToCart = (product, event) => {
     justify-content: space-between;
     align-items: center;
     padding: 12px 16px;
-    background: linear-gradient(135deg, #fffaf4 0%, #f5e6d3 100%);
+    background: linear-gradient(135deg, #F8F5F0 0%, #F5F0E8 100%);
     border-radius: 12px;
-    border: 2px solid #e8dcc6;
+    border: 2px solid rgba(232, 221, 208, 0.6);
     margin: 8px 0;
 }
 
 .price-label {
     font-size: 14px;
-    color: #6a5b4a;
+    color: #6B5A4A;
     font-weight: 600;
     font-family: "Dela Gothic One", sans-serif;
 }
 
 .price-value {
     font-size: 24px;
-    color: #99582A;
+    color: #B84A3A;
     font-weight: bold;
     font-family: "Dela Gothic One", sans-serif;
 }
@@ -910,8 +1027,8 @@ const addToCart = (product, event) => {
 .btn {
     margin-top: auto;
     padding: 14px 24px;
-    background: linear-gradient(135deg, #d7b389 0%, #c49a6c 100%);
-    color: #3b2b1f;
+    background: linear-gradient(135deg, #C85D3E 0%, #B84A3A 100%);
+    color: white;
     border: none;
     border-radius: 14px;
     font-weight: bold;
@@ -919,20 +1036,36 @@ const addToCart = (product, event) => {
     font-family: "Dela Gothic One", sans-serif;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(153, 88, 42, 0.25);
+    box-shadow: 0 4px 12px rgba(200, 93, 62, 0.25);
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
 
 .btn:hover {
-    background: linear-gradient(135deg, #c49a6c 0%, #99582A 100%);
+    background: linear-gradient(135deg, #C85D3E 0%, #B84A3A 100%);
     color: white;
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(153, 88, 42, 0.4);
+    box-shadow: 0 6px 20px rgba(200, 93, 62, 0.4);
 }
 
 .btn:active {
     transform: translateY(0);
+}
+
+@media (max-width: 968px) {
+    .products {
+        margin: 35px auto;
+        padding: 0 18px;
+    }
+    
+    .section-title {
+        font-size: 28px;
+    }
+    
+    .products-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 25px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -947,12 +1080,16 @@ const addToCart = (product, event) => {
     }
     
     .products-grid {
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
         gap: 20px;
     }
     
     .card-content {
         padding: 20px;
+    }
+    
+    .card-title {
+        font-size: 20px;
     }
     
     .size-buttons {
@@ -962,19 +1099,344 @@ const addToCart = (product, event) => {
     .size-btn {
         width: 100%;
     }
+    
+    .search-input {
+        padding: 12px 45px 12px 43px;
+        font-size: 15px;
+    }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 640px) {
+    .products {
+        margin: 25px auto;
+        padding: 0 12px;
+    }
+    
+    .products-header {
+        margin-bottom: 30px;
+    }
+    
+    .section-title {
+        font-size: 22px;
+        margin-bottom: 25px;
+    }
+    
     .products-grid {
         grid-template-columns: 1fr;
+        gap: 18px;
+    }
+    
+    .card-content {
+        padding: 18px;
     }
     
     .card-title {
+        font-size: 18px;
+    }
+    
+    .card-description {
+        font-size: 13px;
+    }
+    
+    .price-value {
+        font-size: 22px;
+    }
+    
+    .btn {
+        padding: 12px 20px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .products {
+        margin: 20px auto;
+        padding: 0 10px;
+    }
+    
+    .section-title {
         font-size: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .card-title {
+        font-size: 18px;
     }
     
     .price-value {
         font-size: 20px;
+    }
+    
+    .search-input {
+        padding: 10px 40px 10px 38px;
+        font-size: 14px;
+    }
+    
+    .search-icon {
+        width: 18px;
+        height: 18px;
+        left: 12px;
+    }
+}
+
+/* Стили для модального окна с подробностями */
+.product-modal {
+    padding: 0;
+    background: white;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    border-bottom: 2px solid rgba(232, 221, 208, 0.5);
+    background: linear-gradient(135deg, #F8F5F0 0%, #F5F0E8 100%);
+}
+
+.modal-title {
+    font-family: "Dela Gothic One", sans-serif;
+    font-size: 22px;
+    color: #3D2E28;
+    margin: 0;
+    font-weight: bold;
+}
+
+.modal-close {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-close:hover {
+    background: rgba(230, 57, 70, 0.1);
+    transform: rotate(90deg);
+}
+
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 24px;
+}
+
+.modal-image-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+    border-radius: 16px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #F8F5F0 0%, #F5F0E8 100%);
+    aspect-ratio: 1;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.modal-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: 
+        brightness(1.1) 
+        contrast(1.15) 
+        saturate(1.25)
+        sepia(0.08)
+        hue-rotate(-5deg);
+}
+
+.modal-badge {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: linear-gradient(135deg, #B84A3A 0%, #C85D3E 100%);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 24px;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: "Dela Gothic One", sans-serif;
+    z-index: 2;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.modal-badge-new {
+    background: linear-gradient(135deg, #B84A3A 0%, #A63D2E 100%);
+    top: 16px;
+    left: 16px;
+    right: auto;
+}
+
+.modal-info {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.modal-description {
+    padding-bottom: 16px;
+    border-bottom: 2px solid rgba(232, 221, 208, 0.5);
+}
+
+.info-title {
+    font-family: "Dela Gothic One", sans-serif;
+    font-size: 18px;
+    color: #3D2E28;
+    margin: 0 0 8px 0;
+    font-weight: bold;
+}
+
+.info-text {
+    font-size: 14px;
+    color: #6B5A4A;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.modal-details {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.modal-size-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.modal-size-btn {
+    flex: 1;
+    padding: 12px 16px;
+    background: #F5F0E8;
+    border: 2px solid rgba(232, 221, 208, 0.6);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    font-family: "Dela Gothic One", sans-serif;
+}
+
+.modal-size-btn:hover {
+    background: rgba(232, 221, 208, 0.5);
+    border-color: #C85D3E;
+    transform: translateY(-2px);
+}
+
+.modal-size-btn.active {
+    background: linear-gradient(135deg, #C85D3E 0%, #B84A3A 100%);
+    border-color: #B84A3A;
+    color: white;
+    box-shadow: 0 4px 12px rgba(230, 57, 70, 0.3);
+}
+
+.modal-size-value {
+    font-size: 14px;
+    font-weight: bold;
+    color: inherit;
+}
+
+.modal-size-price {
+    font-size: 12px;
+    color: inherit;
+    opacity: 0.9;
+}
+
+.modal-price-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    background: linear-gradient(135deg, #F8F5F0 0%, #F5F0E8 100%);
+    border-radius: 12px;
+    border: 2px solid rgba(232, 221, 208, 0.6);
+}
+
+.modal-price-value {
+    font-size: 24px;
+    color: #B84A3A;
+    font-weight: bold;
+    font-family: "Dela Gothic One", sans-serif;
+}
+
+.modal-add-btn {
+    margin-top: auto;
+    padding: 14px 24px;
+    background: linear-gradient(135deg, #C85D3E 0%, #B84A3A 100%);
+    color: white;
+    border: none;
+    border-radius: 14px;
+    font-weight: bold;
+    font-size: 16px;
+    font-family: "Dela Gothic One", sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(200, 93, 62, 0.25);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.modal-add-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(200, 93, 62, 0.4);
+}
+
+.modal-add-btn:active {
+    transform: translateY(0);
+}
+
+/* Адаптивность для модального окна */
+@media (max-width: 640px) {
+    .modal-header {
+        padding: 14px 16px;
+    }
+    
+    .modal-title {
+        font-size: 18px;
+    }
+    
+    .modal-content {
+        padding: 16px;
+        gap: 16px;
+    }
+    
+    .modal-image-wrapper {
+        max-width: 250px;
+    }
+    
+    .info-title {
+        font-size: 16px;
+    }
+    
+    .info-text {
+        font-size: 13px;
+    }
+    
+    .modal-size-buttons {
+        flex-direction: column;
+    }
+    
+    .modal-size-btn {
+        width: 100%;
+    }
+    
+    .modal-price-value {
+        font-size: 20px;
+    }
+    
+    .modal-add-btn {
+        padding: 12px 20px;
+        font-size: 14px;
     }
 }
 </style>

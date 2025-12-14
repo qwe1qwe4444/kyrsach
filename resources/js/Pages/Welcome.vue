@@ -113,28 +113,20 @@ provide('clearCart', clearCart);
             >
                 Личный кабинет
             </Link>
-            <template v-else>
-                <Link
-                    :href="route('login')"
-                    class="auth-btn auth-btn-primary"
-                >
-                    Войти
-                </Link>
-                <Link
-                    v-if="canRegister"
-                    :href="route('register')"
-                    class="auth-btn auth-btn-secondary"
-                >
-                    Регистрация
-                </Link>
-            </template>
+            <Link
+                v-else
+                :href="route('login')"
+                class="auth-btn auth-btn-primary"
+            >
+                Войти
+            </Link>
         </div>
     </div>
 </template>
 
 <style scoped>
 .bg-cream {
-    background-color: #fffaf4;
+    background-color: #F8F5F0;
 }
 
 .auth-links {
@@ -159,25 +151,25 @@ provide('clearCart', clearCart);
 }
 
 .auth-btn-primary {
-    background: #d7b389;
-    color: #3b2b1f;
+    background: #C85D3E;
+    color: white;
 }
 
 .auth-btn-primary:hover {
-    background: #c49a6c;
+    background: #B84A3A;
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .auth-btn-secondary {
-    background: #99582A;
+    background: #B84A3A;
     color: #fff;
 }
 
 .auth-btn-secondary:hover {
-    background: #8a4d25;
+    background: #C1121F;
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(153, 88, 42, 0.3);
+    box-shadow: 0 4px 12px rgba(230, 57, 70, 0.3);
 }
 
 @media (max-width: 768px) {

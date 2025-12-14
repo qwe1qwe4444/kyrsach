@@ -167,7 +167,7 @@ const handleImageError = (event) => {
 
 <style scoped>
 .bg-cream {
-    background-color: #fffaf4;
+    background-color: #F8F5F0;
 }
 
 .cart-page {
@@ -175,10 +175,10 @@ const handleImageError = (event) => {
 }
 
 .hero-section {
-    background: linear-gradient(135deg, #c49a6c 0%, #99582A 100%);
+    background: linear-gradient(135deg, #C85D3E 0%, #B84A3A 100%);
     padding: 80px 20px 60px;
     text-align: center;
-    border-bottom: 4px solid #d7b389;
+    border-bottom: 3px solid rgba(168, 61, 46, 0.3);
 }
 
 .hero-content {
@@ -224,20 +224,20 @@ const handleImageError = (event) => {
 .empty-cart-title {
     font-family: "Dela Gothic One", sans-serif;
     font-size: 32px;
-    color: #3b2b1f;
+    color: #3D2E28;
     margin: 0 0 16px 0;
 }
 
 .empty-cart-text {
     font-size: 18px;
-    color: #5a4a3a;
+    color: #4A3A2A;
     margin: 0 0 40px 0;
 }
 
 .back-to-menu-btn {
     display: inline-block;
     padding: 16px 32px;
-    background: linear-gradient(135deg, #99582A 0%, #c49a6c 100%);
+    background: linear-gradient(135deg, #B84A3A 0%, #C85D3E 100%);
     color: white;
     border-radius: 12px;
     font-family: "Dela Gothic One", sans-serif;
@@ -245,12 +245,12 @@ const handleImageError = (event) => {
     font-weight: bold;
     text-decoration: none;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(153, 88, 42, 0.3);
+    box-shadow: 0 4px 12px rgba(200, 93, 62, 0.3);
 }
 
 .back-to-menu-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(153, 88, 42, 0.4);
+    box-shadow: 0 6px 20px rgba(200, 93, 62, 0.4);
 }
 
 .cart-content {
@@ -273,7 +273,7 @@ const handleImageError = (event) => {
     display: flex;
     gap: 20px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    border: 2px solid #d7b389;
+    border: 2px solid #C85D3E;
     transition: all 0.3s ease;
 }
 
@@ -307,20 +307,20 @@ const handleImageError = (event) => {
 .cart-item-name {
     font-family: "Dela Gothic One", sans-serif;
     font-size: 20px;
-    color: #3b2b1f;
+    color: #3D2E28;
     margin: 0;
     font-weight: bold;
 }
 
 .cart-item-size {
     font-size: 14px;
-    color: #5a4a3a;
+    color: #4A3A2A;
     margin: 0;
 }
 
 .cart-item-price {
     font-size: 16px;
-    color: #99582A;
+    color: #B84A3A;
     font-weight: 600;
     margin: 0;
 }
@@ -336,18 +336,18 @@ const handleImageError = (event) => {
     display: flex;
     align-items: center;
     gap: 12px;
-    background: #fffaf4;
+    background: #F5F0E8;
     border-radius: 8px;
     padding: 4px;
-    border: 2px solid #d7b389;
+    border: 2px solid #C85D3E;
 }
 
 .quantity-btn {
     width: 32px;
     height: 32px;
     border: none;
-    background: linear-gradient(135deg, #d7b389 0%, #c49a6c 100%);
-    color: #3b2b1f;
+    background: linear-gradient(135deg, #C85D3E 0%, #B84A3A 100%);
+    color: white;
     border-radius: 6px;
     font-size: 20px;
     font-weight: bold;
@@ -360,7 +360,7 @@ const handleImageError = (event) => {
 }
 
 .quantity-btn:hover {
-    background: linear-gradient(135deg, #c49a6c 0%, #99582A 100%);
+    background: linear-gradient(135deg, #C85D3E 0%, #B84A3A 100%);
     color: white;
     transform: scale(1.1);
 }
@@ -368,7 +368,7 @@ const handleImageError = (event) => {
 .quantity-value {
     font-family: "Dela Gothic One", sans-serif;
     font-size: 18px;
-    color: #3b2b1f;
+    color: #3D2E28;
     min-width: 30px;
     text-align: center;
     font-weight: bold;
@@ -377,7 +377,7 @@ const handleImageError = (event) => {
 .cart-item-total {
     font-family: "Dela Gothic One", sans-serif;
     font-size: 22px;
-    color: #99582A;
+    color: #B84A3A;
     font-weight: bold;
 }
 
@@ -408,13 +408,13 @@ const handleImageError = (event) => {
     border-radius: 16px;
     padding: 32px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    border: 2px solid #d7b389;
+    border: 2px solid #C85D3E;
 }
 
 .summary-title {
     font-family: "Dela Gothic One", sans-serif;
     font-size: 24px;
-    color: #3b2b1f;
+    color: #3D2E28;
     margin: 0 0 24px 0;
     font-weight: bold;
 }
@@ -424,7 +424,7 @@ const handleImageError = (event) => {
     justify-content: space-between;
     align-items: center;
     padding: 12px 0;
-    border-bottom: 1px solid #d7b389;
+    border-bottom: 1px solid rgba(200, 93, 62, 0.3);
 }
 
 .summary-row:last-of-type {
@@ -434,31 +434,31 @@ const handleImageError = (event) => {
 .total-row {
     margin-top: 16px;
     padding-top: 20px;
-    border-top: 2px solid #d7b389;
+    border-top: 2px solid rgba(200, 93, 62, 0.3);
 }
 
 .summary-label {
     font-size: 16px;
-    color: #5a4a3a;
+    color: #4A3A2A;
 }
 
 .summary-value {
     font-family: "Dela Gothic One", sans-serif;
     font-size: 18px;
-    color: #3b2b1f;
+    color: #3D2E28;
     font-weight: bold;
 }
 
 .total-price {
     font-size: 28px;
-    color: #99582A;
+    color: #B84A3A;
 }
 
 .checkout-btn {
     width: 100%;
     padding: 16px;
     margin-top: 24px;
-    background: linear-gradient(135deg, #99582A 0%, #c49a6c 100%);
+    background: linear-gradient(135deg, #B84A3A 0%, #C85D3E 100%);
     color: white;
     border: none;
     border-radius: 12px;
@@ -467,19 +467,19 @@ const handleImageError = (event) => {
     font-weight: bold;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(153, 88, 42, 0.3);
+    box-shadow: 0 4px 12px rgba(200, 93, 62, 0.3);
 }
 
 .checkout-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(153, 88, 42, 0.4);
+    box-shadow: 0 6px 20px rgba(200, 93, 62, 0.4);
 }
 
 .continue-shopping {
     display: block;
     text-align: center;
     margin-top: 16px;
-    color: #99582A;
+    color: #B84A3A;
     text-decoration: none;
     font-size: 16px;
     font-weight: 600;
@@ -487,27 +487,93 @@ const handleImageError = (event) => {
 }
 
 .continue-shopping:hover {
-    color: #c49a6c;
+    color: #C85D3E;
     text-decoration: underline;
 }
 
 @media (max-width: 968px) {
     .cart-content {
         grid-template-columns: 1fr;
+        gap: 30px;
     }
     
     .cart-summary {
         position: static;
     }
     
+    .hero-section {
+        padding: 60px 20px 50px;
+    }
+    
     .hero-title {
         font-size: 36px;
+    }
+    
+    .hero-subtitle {
+        font-size: 18px;
+    }
+    
+    .content-section {
+        padding: 50px 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 50px 15px 40px;
+    }
+    
+    .hero-title {
+        font-size: 32px;
+    }
+    
+    .hero-subtitle {
+        font-size: 16px;
+    }
+    
+    .content-section {
+        padding: 40px 15px;
+    }
+    
+    .cart-item {
+        padding: 20px;
+        gap: 15px;
+    }
+    
+    .cart-item-image {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .cart-item-name {
+        font-size: 18px;
+    }
+    
+    .summary-card {
+        padding: 24px;
     }
 }
 
 @media (max-width: 640px) {
+    .hero-section {
+        padding: 40px 15px 30px;
+    }
+    
+    .hero-title {
+        font-size: 28px;
+    }
+    
+    .hero-subtitle {
+        font-size: 14px;
+    }
+    
+    .content-section {
+        padding: 30px 15px;
+    }
+    
     .cart-item {
         flex-direction: column;
+        padding: 16px;
     }
     
     .cart-item-image {
@@ -520,6 +586,74 @@ const handleImageError = (event) => {
         justify-content: space-between;
         align-items: center;
         width: 100%;
+    }
+    
+    .cart-item-total {
+        font-size: 20px;
+    }
+    
+    .summary-card {
+        padding: 20px;
+    }
+    
+    .summary-title {
+        font-size: 20px;
+    }
+    
+    .total-price {
+        font-size: 24px;
+    }
+    
+    .checkout-btn {
+        padding: 14px;
+        font-size: 16px;
+    }
+    
+    .empty-cart {
+        padding: 60px 15px;
+    }
+    
+    .empty-cart-title {
+        font-size: 28px;
+    }
+    
+    .empty-cart-text {
+        font-size: 16px;
+    }
+    
+    .back-to-menu-btn {
+        padding: 14px 28px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 24px;
+    }
+    
+    .cart-item-name {
+        font-size: 16px;
+    }
+    
+    .cart-item-price {
+        font-size: 14px;
+    }
+    
+    .quantity-value {
+        font-size: 16px;
+    }
+    
+    .cart-item-total {
+        font-size: 18px;
+    }
+    
+    .summary-value {
+        font-size: 16px;
+    }
+    
+    .total-price {
+        font-size: 22px;
     }
 }
 </style>

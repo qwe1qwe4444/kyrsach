@@ -53,7 +53,7 @@ import { Link } from '@inertiajs/vue3';
                     <ul class="footer-contacts">
                         <li class="contact-item">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M3 5C3 3.89543 3.89543 3 5 3H8.27924C8.70967 3 9.09181 3.27543 9.22792 3.68377L10.7257 8.17721C10.8831 8.64932 10.6694 9.16531 10.2243 9.38787L7.96701 10.5165C9.06925 12.9612 11.0388 14.9308 13.4835 16.033L14.6121 13.7757C14.8347 13.3306 15.3507 13.1169 15.8228 13.2743L20.3162 14.7721C20.7246 14.9082 21 15.2903 21 15.7208V19C21 20.1046 20.1046 21 19 21H18C9.71573 21 3 14.2843 3 6V5Z" fill="#99582A"/>
+                                <path d="M3 5C3 3.89543 3.89543 3 5 3H8.27924C8.70967 3 9.09181 3.27543 9.22792 3.68377L10.7257 8.17721C10.8831 8.64932 10.6694 9.16531 10.2243 9.38787L7.96701 10.5165C9.06925 12.9612 11.0388 14.9308 13.4835 16.033L14.6121 13.7757C14.8347 13.3306 15.3507 13.1169 15.8228 13.2743L20.3162 14.7721C20.7246 14.9082 21 15.2903 21 15.7208V19C21 20.1046 20.1046 21 19 21H18C9.71573 21 3 14.2843 3 6V5Z" fill="#FCBF49"/>
                             </svg>
                             <span>+7 (999) 123-45-67</span>
                         </li>
@@ -106,10 +106,10 @@ import { Link } from '@inertiajs/vue3';
 
 <style scoped>
 .footer {
-    background: linear-gradient(135deg, #c49a6c 0%, #99582A 100%);
+    background: linear-gradient(135deg, #C85D3E 0%, #B84A3A 100%);
     color: white;
     margin-top: 60px;
-    border-top: 4px solid #d7b389;
+    border-top: 3px solid rgba(168, 61, 46, 0.3);
 }
 
 .footer-container {
@@ -240,6 +240,17 @@ import { Link } from '@inertiajs/vue3';
     margin: 0;
 }
 
+@media (max-width: 968px) {
+    .footer-content {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 35px;
+    }
+    
+    .footer-container {
+        padding: 35px 18px 18px;
+    }
+}
+
 @media (max-width: 768px) {
     .footer-content {
         grid-template-columns: 1fr;
@@ -250,8 +261,81 @@ import { Link } from '@inertiajs/vue3';
         padding: 30px 15px 15px;
     }
     
+    .footer-title {
+        font-size: 22px;
+    }
+    
+    .footer-heading {
+        font-size: 16px;
+    }
+    
     .social-links {
         justify-content: center;
+    }
+}
+
+@media (max-width: 640px) {
+    .footer-container {
+        padding: 25px 12px 12px;
+    }
+    
+    .footer-content {
+        gap: 25px;
+    }
+    
+    .footer-title {
+        font-size: 20px;
+    }
+    
+    .footer-logo svg {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .footer-heading {
+        font-size: 15px;
+    }
+    
+    .footer-link,
+    .contact-item {
+        font-size: 13px;
+    }
+    
+    .social-link {
+        width: 36px;
+        height: 36px;
+    }
+    
+    .social-link svg {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-container {
+        padding: 20px 10px 10px;
+    }
+    
+    .footer-content {
+        gap: 20px;
+    }
+    
+    .footer-title {
+        font-size: 18px;
+    }
+    
+    .footer-logo {
+        gap: 8px;
+    }
+    
+    .footer-logo svg {
+        width: 45px;
+        height: 45px;
+    }
+    
+    .footer-copyright {
+        font-size: 12px;
     }
 }
 </style>

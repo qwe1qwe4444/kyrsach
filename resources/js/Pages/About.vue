@@ -28,9 +28,9 @@ import Footer from '@/Components/Footer.vue';
                         <div class="about-card">
                             <div class="card-icon">
                                 <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="#99582A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <path d="M2 17L12 22L22 17" stroke="#99582A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <path d="M2 12L12 17L22 12" stroke="#99582A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="#B84A3A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M2 17L12 22L22 17" stroke="#B84A3A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M2 12L12 17L22 12" stroke="#B84A3A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
                             </div>
                             <h3 class="card-title">Свежие ингредиенты</h3>
@@ -40,7 +40,7 @@ import Footer from '@/Components/Footer.vue';
                         <div class="about-card">
                             <div class="card-icon">
                                 <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="#99582A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="#B84A3A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
                             </div>
                             <h3 class="card-title">Традиционные рецепты</h3>
@@ -50,7 +50,7 @@ import Footer from '@/Components/Footer.vue';
                         <div class="about-card">
                             <div class="card-icon">
                                 <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM13 17H11V15H13V17ZM13 13H11V7H13V13Z" fill="#99582A"/>
+                                    <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM13 17H11V15H13V17ZM13 13H11V7H13V13Z" fill="#B84A3A"/>
                                 </svg>
                             </div>
                             <h3 class="card-title">Быстрая доставка</h3>
@@ -119,7 +119,7 @@ import Footer from '@/Components/Footer.vue';
 
 <style scoped>
 .bg-cream {
-    background-color: #fffaf4;
+    background-color: #F8F5F0;
 }
 
 .about-page {
@@ -127,10 +127,10 @@ import Footer from '@/Components/Footer.vue';
 }
 
 .hero-section {
-    background: linear-gradient(135deg, #d7b389 0%, #c49a6c 100%);
+    background: linear-gradient(135deg, #C85D3E 0%, #B84A3A 100%);
     padding: 80px 20px;
     text-align: center;
-    border-bottom: 4px solid #99582A;
+    border-bottom: 3px solid rgba(168, 61, 46, 0.3);
 }
 
 .hero-content {
@@ -141,14 +141,14 @@ import Footer from '@/Components/Footer.vue';
 .hero-title {
     font-family: "Dela Gothic One", sans-serif;
     font-size: 48px;
-    color: #3b2b1f;
+    color: white;
     margin: 0 0 20px 0;
     font-weight: bold;
 }
 
 .hero-subtitle {
     font-size: 24px;
-    color: #3b2b1f;
+    color: white;
     margin: 0;
     font-weight: 600;
 }
@@ -182,7 +182,7 @@ import Footer from '@/Components/Footer.vue';
 .about-card:hover {
     transform: translateY(-8px);
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
-    border-color: #d7b389;
+    border-color: #C85D3E;
 }
 
 .card-icon {
@@ -194,14 +194,14 @@ import Footer from '@/Components/Footer.vue';
 .card-title {
     font-family: "Dela Gothic One", sans-serif;
     font-size: 24px;
-    color: #3b2b1f;
+    color: #3D2E28;
     margin: 0 0 16px 0;
     font-weight: bold;
 }
 
 .card-text {
     font-size: 16px;
-    color: #6a5b4a;
+    color: #6B5A4A;
     line-height: 1.6;
     margin: 0;
 }
@@ -213,17 +213,17 @@ import Footer from '@/Components/Footer.vue';
 .section-title {
     font-family: "Dela Gothic One", sans-serif;
     font-size: 36px;
-    color: #3b2b1f;
+    color: #3D2E28;
     text-align: center;
     margin: 0 0 40px 0;
     font-weight: bold;
 }
 
 .story-content {
-    background: linear-gradient(135deg, #fffaf4 0%, #f5e6d3 100%);
+    background: linear-gradient(135deg, #F8F5F0 0%, #F5F0E8 100%);
     padding: 40px;
     border-radius: 24px;
-    border: 2px solid #e8dcc6;
+    border: 2px solid rgba(232, 221, 208, 0.6);
 }
 
 .story-text {
@@ -233,7 +233,7 @@ import Footer from '@/Components/Footer.vue';
 
 .story-text p {
     font-size: 18px;
-    color: #3b2b1f;
+    color: #3D2E28;
     line-height: 1.8;
     margin: 0 0 20px 0;
 }
@@ -258,12 +258,12 @@ import Footer from '@/Components/Footer.vue';
     border-radius: 20px;
     text-align: center;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-    border: 2px solid #e8dcc6;
+    border: 2px solid rgba(232, 221, 208, 0.6);
     transition: all 0.3s ease;
 }
 
 .value-item:hover {
-    border-color: #d7b389;
+    border-color: #C85D3E;
     transform: translateY(-5px);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
 }
@@ -271,37 +271,37 @@ import Footer from '@/Components/Footer.vue';
 .value-item h4 {
     font-family: "Dela Gothic One", sans-serif;
     font-size: 22px;
-    color: #99582A;
+    color: #B84A3A;
     margin: 0 0 12px 0;
     font-weight: bold;
 }
 
 .value-item p {
     font-size: 15px;
-    color: #6a5b4a;
+    color: #6B5A4A;
     line-height: 1.6;
     margin: 0;
 }
 
 .cta-section {
-    background: linear-gradient(135deg, #d7b389 0%, #c49a6c 100%);
+    background: linear-gradient(135deg, #C85D3E 0%, #B84A3A 100%);
     padding: 60px 40px;
     border-radius: 24px;
     text-align: center;
-    box-shadow: 0 8px 30px rgba(153, 88, 42, 0.3);
+    box-shadow: 0 8px 30px rgba(230, 57, 70, 0.3);
 }
 
 .cta-title {
     font-family: "Dela Gothic One", sans-serif;
     font-size: 36px;
-    color: #3b2b1f;
+    color: white;
     margin: 0 0 16px 0;
     font-weight: bold;
 }
 
 .cta-text {
     font-size: 20px;
-    color: #3b2b1f;
+    color: white;
     margin: 0 0 30px 0;
     font-weight: 600;
 }
@@ -309,7 +309,7 @@ import Footer from '@/Components/Footer.vue';
 .cta-button {
     display: inline-block;
     padding: 16px 40px;
-    background: #99582A;
+    background: #B84A3A;
     color: white;
     text-decoration: none;
     border-radius: 16px;
@@ -323,9 +323,29 @@ import Footer from '@/Components/Footer.vue';
 }
 
 .cta-button:hover {
-    background: #8a4d25;
+    background: #C1121F;
     transform: translateY(-3px);
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 968px) {
+    .hero-section {
+        padding: 70px 20px;
+    }
+    
+    .hero-title {
+        font-size: 42px;
+    }
+    
+    .about-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 25px;
+    }
+    
+    .values-grid {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 25px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -379,6 +399,138 @@ import Footer from '@/Components/Footer.vue';
     
     .cta-text {
         font-size: 18px;
+    }
+}
+
+@media (max-width: 640px) {
+    .hero-section {
+        padding: 50px 15px;
+    }
+    
+    .hero-title {
+        font-size: 32px;
+    }
+    
+    .hero-subtitle {
+        font-size: 18px;
+    }
+    
+    .content-section {
+        padding: 35px 12px;
+    }
+    
+    .about-card {
+        padding: 30px 20px;
+    }
+    
+    .card-title {
+        font-size: 22px;
+    }
+    
+    .card-text {
+        font-size: 15px;
+    }
+    
+    .section-title {
+        font-size: 24px;
+        margin-bottom: 25px;
+    }
+    
+    .story-content {
+        padding: 25px 18px;
+    }
+    
+    .story-text p {
+        font-size: 15px;
+    }
+    
+    .value-item {
+        padding: 25px 20px;
+    }
+    
+    .value-item h4 {
+        font-size: 20px;
+    }
+    
+    .cta-section {
+        padding: 35px 18px;
+    }
+    
+    .cta-title {
+        font-size: 24px;
+    }
+    
+    .cta-text {
+        font-size: 16px;
+    }
+    
+    .cta-button {
+        padding: 14px 32px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-section {
+        padding: 40px 12px;
+    }
+    
+    .hero-title {
+        font-size: 28px;
+    }
+    
+    .hero-subtitle {
+        font-size: 16px;
+    }
+    
+    .content-section {
+        padding: 30px 10px;
+    }
+    
+    .about-card {
+        padding: 25px 18px;
+    }
+    
+    .card-icon svg {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .card-title {
+        font-size: 20px;
+    }
+    
+    .section-title {
+        font-size: 22px;
+    }
+    
+    .story-content {
+        padding: 20px 15px;
+    }
+    
+    .story-text p {
+        font-size: 14px;
+    }
+    
+    .value-item {
+        padding: 20px 18px;
+    }
+    
+    .cta-section {
+        padding: 30px 15px;
+    }
+    
+    .cta-title {
+        font-size: 22px;
+    }
+    
+    .cta-text {
+        font-size: 15px;
+    }
+    
+    .cta-button {
+        padding: 12px 28px;
+        font-size: 15px;
     }
 }
 </style>

@@ -19,9 +19,10 @@ class RegisteredUserController extends Controller
     /**
      * Display the registration view.
      */
-    public function create(): Response
+    public function create(): RedirectResponse
     {
-        return Inertia::render('Auth/Register');
+        // Перенаправляем на страницу логина с параметром для автоматического переключения на регистрацию
+        return redirect()->route('login', ['mode' => 'register']);
     }
 
     /**

@@ -50,7 +50,7 @@ const handleSubmit = () => {
                             <div class="contact-item">
                                 <div class="contact-icon">
                                     <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M3 5C3 3.89543 3.89543 3 5 3H8.27924C8.70967 3 9.09181 3.27543 9.22792 3.68377L10.7257 8.17721C10.8831 8.64932 10.6694 9.16531 10.2243 9.38787L7.96701 10.5165C9.06925 12.9612 11.0388 14.9308 13.4835 16.033L14.6121 13.7757C14.8347 13.3306 15.3507 13.1169 15.8228 13.2743L20.3162 14.7721C20.7246 14.9082 21 15.2903 21 15.7208V19C21 20.1046 20.1046 21 19 21H18C9.71573 21 3 14.2843 3 6V5Z" fill="#99582A"/>
+                                        <path d="M3 5C3 3.89543 3.89543 3 5 3H8.27924C8.70967 3 9.09181 3.27543 9.22792 3.68377L10.7257 8.17721C10.8831 8.64932 10.6694 9.16531 10.2243 9.38787L7.96701 10.5165C9.06925 12.9612 11.0388 14.9308 13.4835 16.033L14.6121 13.7757C14.8347 13.3306 15.3507 13.1169 15.8228 13.2743L20.3162 14.7721C20.7246 14.9082 21 15.2903 21 15.7208V19C21 20.1046 20.1046 21 19 21H18C9.71573 21 3 14.2843 3 6V5Z" fill="#B84A3A"/>
                                     </svg>
                                 </div>
                                 <div class="contact-details">
@@ -63,7 +63,7 @@ const handleSubmit = () => {
                             <div class="contact-item">
                                 <div class="contact-icon">
                                     <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M3 8L10.89 13.26C11.2187 13.4793 11.6049 13.5963 12 13.5963C12.3951 13.5963 12.7813 13.4793 13.11 13.26L21 8M5 19H19C19.5304 19 20.0391 18.7893 20.4142 18.4142C20.7893 18.0391 21 17.5304 21 17V7C21 6.46957 20.7893 5.96086 20.4142 5.58579C20.0391 5.21071 19.5304 5 19 5H5C4.46957 5 3.96086 5.21071 3.58579 5.58579C3.21071 5.96086 3 6.46957 3 7V17C3 17.5304 3.21071 18.0391 3.58579 18.4142C3.96086 18.7893 4.46957 19 5 19Z" stroke="#99582A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M3 8L10.89 13.26C11.2187 13.4793 11.6049 13.5963 12 13.5963C12.3951 13.5963 12.7813 13.4793 13.11 13.26L21 8M5 19H19C19.5304 19 20.0391 18.7893 20.4142 18.4142C20.7893 18.0391 21 17.5304 21 17V7C21 6.46957 20.7893 5.96086 20.4142 5.58579C20.0391 5.21071 19.5304 5 19 5H5C4.46957 5 3.96086 5.21071 3.58579 5.58579C3.21071 5.96086 3 6.46957 3 7V17C3 17.5304 3.21071 18.0391 3.58579 18.4142C3.96086 18.7893 4.46957 19 5 19Z" stroke="#B84A3A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                     </svg>
                                 </div>
                                 <div class="contact-details">
@@ -76,8 +76,8 @@ const handleSubmit = () => {
                             <div class="contact-item">
                                 <div class="contact-icon">
                                     <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M21 10C21 17 12 23 12 23C12 23 3 17 3 10C3 7.61305 3.94821 5.32387 5.63604 3.63604C7.32387 1.94821 9.61305 1 12 1C14.3869 1 16.6761 1.94821 18.364 3.63604C20.0518 5.32387 21 7.61305 21 10Z" stroke="#99582A" stroke-width="2"/>
-                                        <path d="M12 13C13.6569 13 15 11.6569 15 10C15 8.34315 13.6569 7 12 7C10.3431 7 9 8.34315 9 10C9 11.6569 10.3431 13 12 13Z" stroke="#99582A" stroke-width="2"/>
+                                        <path d="M21 10C21 17 12 23 12 23C12 23 3 17 3 10C3 7.61305 3.94821 5.32387 5.63604 3.63604C7.32387 1.94821 9.61305 1 12 1C14.3869 1 16.6761 1.94821 18.364 3.63604C20.0518 5.32387 21 7.61305 21 10Z" stroke="#B84A3A" stroke-width="2"/>
+                                        <path d="M12 13C13.6569 13 15 11.6569 15 10C15 8.34315 13.6569 7 12 7C10.3431 7 9 8.34315 9 10C9 11.6569 10.3431 13 12 13Z" stroke="#B84A3A" stroke-width="2"/>
                                     </svg>
                                 </div>
                                 <div class="contact-details">
@@ -179,10 +179,10 @@ const handleSubmit = () => {
 }
 
 .hero-section {
-    background: linear-gradient(135deg, #c49a6c 0%, #99582A 100%);
+    background: linear-gradient(135deg, #C85D3E 0%, #B84A3A 100%);
     padding: 80px 20px 60px;
     text-align: center;
-    border-bottom: 4px solid #d7b389;
+    border-bottom: 3px solid rgba(168, 61, 46, 0.3);
 }
 
 .hero-content {
@@ -225,7 +225,7 @@ const handleSubmit = () => {
 .section-title {
     font-family: "Dela Gothic One", sans-serif;
     font-size: 32px;
-    color: #3b2b1f;
+    color: #3D2E28;
     margin: 0 0 40px 0;
     font-weight: bold;
 }
@@ -241,12 +241,12 @@ const handleSubmit = () => {
     flex-shrink: 0;
     width: 60px;
     height: 60px;
-    background: linear-gradient(135deg, #d7b389 0%, #c49a6c 100%);
+    background: linear-gradient(135deg, #C85D3E 0%, #B84A3A 100%);
     border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 12px rgba(153, 88, 42, 0.2);
+    box-shadow: 0 4px 12px rgba(200, 93, 62, 0.2);
 }
 
 .contact-details {
@@ -256,14 +256,14 @@ const handleSubmit = () => {
 .contact-label {
     font-family: "Dela Gothic One", sans-serif;
     font-size: 18px;
-    color: #3b2b1f;
+    color: #3D2E28;
     margin: 0 0 8px 0;
     font-weight: bold;
 }
 
 .contact-value {
     font-size: 16px;
-    color: #5a4a3a;
+    color: #4A3A2A;
     margin: 4px 0;
     line-height: 1.6;
 }
@@ -271,13 +271,13 @@ const handleSubmit = () => {
 .social-section {
     margin-top: 50px;
     padding-top: 40px;
-    border-top: 2px solid #d7b389;
+    border-top: 2px solid rgba(200, 93, 62, 0.3);
 }
 
 .social-title {
     font-family: "Dela Gothic One", sans-serif;
     font-size: 20px;
-    color: #3b2b1f;
+    color: #3D2E28;
     margin: 0 0 20px 0;
     font-weight: bold;
 }
@@ -293,18 +293,18 @@ const handleSubmit = () => {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #d7b389 0%, #c49a6c 100%);
+    background: linear-gradient(135deg, #C85D3E 0%, #B84A3A 100%);
     border-radius: 12px;
-    color: #3b2b1f;
+    color: white;
     transition: all 0.3s ease;
     text-decoration: none;
-    box-shadow: 0 4px 12px rgba(153, 88, 42, 0.2);
+    box-shadow: 0 4px 12px rgba(200, 93, 62, 0.2);
 }
 
 .social-link:hover {
     transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(153, 88, 42, 0.3);
-    background: linear-gradient(135deg, #c49a6c 0%, #99582A 100%);
+    box-shadow: 0 6px 20px rgba(230, 57, 70, 0.3);
+    background: linear-gradient(135deg, #C85D3E 0%, #B84A3A 100%);
     color: white;
 }
 
@@ -313,7 +313,7 @@ const handleSubmit = () => {
     padding: 40px;
     border-radius: 20px;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-    border: 2px solid #d7b389;
+    border: 2px solid #C85D3E;
 }
 
 .contact-form {
@@ -331,28 +331,28 @@ const handleSubmit = () => {
 .form-label {
     font-family: "Dela Gothic One", sans-serif;
     font-size: 16px;
-    color: #3b2b1f;
+    color: #3D2E28;
     font-weight: bold;
 }
 
 .form-input,
 .form-textarea {
     padding: 14px 18px;
-    border: 2px solid #d7b389;
+    border: 2px solid #C85D3E;
     border-radius: 12px;
     font-size: 16px;
     font-family: inherit;
-    color: #3b2b1f;
-    background: #fffaf4;
+    color: #3D2E28;
+    background: #F5F0E8;
     transition: all 0.3s ease;
 }
 
 .form-input:focus,
 .form-textarea:focus {
     outline: none;
-    border-color: #99582A;
+    border-color: #B84A3A;
     background: white;
-    box-shadow: 0 0 0 3px rgba(153, 88, 42, 0.1);
+    box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.1);
 }
 
 .form-textarea {
@@ -362,7 +362,7 @@ const handleSubmit = () => {
 
 .submit-btn {
     padding: 16px 32px;
-    background: linear-gradient(135deg, #99582A 0%, #c49a6c 100%);
+    background: linear-gradient(135deg, #B84A3A 0%, #C85D3E 100%);
     color: white;
     border: none;
     border-radius: 12px;
@@ -371,14 +371,14 @@ const handleSubmit = () => {
     font-weight: bold;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(153, 88, 42, 0.3);
+    box-shadow: 0 4px 12px rgba(230, 57, 70, 0.3);
     margin-top: 8px;
 }
 
 .submit-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(153, 88, 42, 0.4);
-    background: linear-gradient(135deg, #c49a6c 0%, #99582A 100%);
+    box-shadow: 0 6px 20px rgba(230, 57, 70, 0.4);
+    background: linear-gradient(135deg, #C85D3E 0%, #B84A3A 100%);
 }
 
 .submit-btn:active {
@@ -389,6 +389,10 @@ const handleSubmit = () => {
     .contact-grid {
         grid-template-columns: 1fr;
         gap: 40px;
+    }
+    
+    .hero-section {
+        padding: 70px 20px 50px;
     }
     
     .hero-title {
@@ -404,9 +408,41 @@ const handleSubmit = () => {
     }
 }
 
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 60px 18px 45px;
+    }
+    
+    .hero-title {
+        font-size: 32px;
+    }
+    
+    .content-section {
+        padding: 50px 18px;
+    }
+    
+    .section-title {
+        font-size: 28px;
+    }
+    
+    .contact-item {
+        margin-bottom: 30px;
+    }
+    
+    .contact-icon {
+        width: 55px;
+        height: 55px;
+    }
+    
+    .contact-icon svg {
+        width: 28px;
+        height: 28px;
+    }
+}
+
 @media (max-width: 640px) {
     .hero-section {
-        padding: 60px 15px 40px;
+        padding: 50px 15px 35px;
     }
     
     .hero-title {
@@ -423,16 +459,129 @@ const handleSubmit = () => {
     
     .section-title {
         font-size: 24px;
+        margin-bottom: 30px;
     }
     
     .contact-item {
         flex-direction: column;
         gap: 12px;
+        margin-bottom: 25px;
     }
     
     .contact-icon {
         width: 50px;
         height: 50px;
+    }
+    
+    .contact-icon svg {
+        width: 24px;
+        height: 24px;
+    }
+    
+    .contact-label {
+        font-size: 16px;
+    }
+    
+    .contact-value {
+        font-size: 14px;
+    }
+    
+    .contact-form-wrapper {
+        padding: 25px 18px;
+    }
+    
+    .form-label {
+        font-size: 15px;
+    }
+    
+    .form-input,
+    .form-textarea {
+        padding: 12px 16px;
+        font-size: 15px;
+    }
+    
+    .submit-btn {
+        padding: 14px 28px;
+        font-size: 16px;
+    }
+    
+    .social-link {
+        width: 45px;
+        height: 45px;
+    }
+    
+    .social-link svg {
+        width: 24px;
+        height: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-section {
+        padding: 40px 12px 30px;
+    }
+    
+    .hero-title {
+        font-size: 24px;
+    }
+    
+    .hero-subtitle {
+        font-size: 14px;
+    }
+    
+    .content-section {
+        padding: 30px 12px;
+    }
+    
+    .section-title {
+        font-size: 22px;
+        margin-bottom: 25px;
+    }
+    
+    .contact-icon {
+        width: 45px;
+        height: 45px;
+    }
+    
+    .contact-icon svg {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .contact-label {
+        font-size: 15px;
+    }
+    
+    .contact-value {
+        font-size: 13px;
+    }
+    
+    .social-section {
+        margin-top: 40px;
+        padding-top: 30px;
+    }
+    
+    .social-title {
+        font-size: 18px;
+    }
+    
+    .contact-form-wrapper {
+        padding: 20px 15px;
+    }
+    
+    .form-label {
+        font-size: 14px;
+    }
+    
+    .form-input,
+    .form-textarea {
+        padding: 10px 14px;
+        font-size: 14px;
+    }
+    
+    .submit-btn {
+        padding: 12px 24px;
+        font-size: 15px;
     }
 }
 </style>
